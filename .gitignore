@@ -1,0 +1,6 @@
+*.atsln
+*.atsuo
+*.cppproj
+Debug/
+Visual Micro/
+Release/
