@@ -29,8 +29,7 @@ uint32_t convert_speed_units(uint32_t input){
 
 uint32_t get_spindle_period(){
 	
-	uint32_t timestamp = millis();
-	return max(spindle_pulse_last_period, timestamp - spindle_pulse_last_timestamp) * spindle_pulses_per_revolution;
+	return max(spindle_pulse_last_period, millis() - spindle_pulse_last_timestamp) * spindle_pulses_per_revolution;
 }
 
 uint16_t get_spindle_rpm(){
