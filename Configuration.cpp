@@ -3,6 +3,7 @@
 // 
 
 #include "Configuration.h"
+#include <EEPROMex.h>
 
 uint8_t CONFIG_ADDR_SCHEMA = 1;
 uint8_t CONFIG_ADDR_COOLANT_LEVEL_MAX = 2;
