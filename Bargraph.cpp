@@ -13,7 +13,7 @@ boolean bargraph_lit = false;
 uint32_t bargraph_flash_last_timestamp = 0;
 uint16_t bargraph_flast_delay = 0;
 
-void set_bargraph(uint16_t value){
+void set_bargraph_raw(uint16_t value){
 
 	// Only bother re-outputting the value if it's different
 	if(bargraph_current_value != value){
@@ -24,7 +24,7 @@ void set_bargraph(uint16_t value){
 
 void set_bargraph(uint8_t value, boolean fill_up){
 
-	set_bargraph(create_bargraph_value(value, fill_up));
+	set_bargraph_raw(create_bargraph_value(value, fill_up));
 }
 
 void set_bargraph(uint8_t value){
@@ -73,7 +73,7 @@ void update_bargraph_output(){
 void write_bargraph_output(uint16_t value){
 	
 	// Clear all outputs
-	Tlc.setAll(0);
+	Tlc.clear();
 	
 	uint16_t mask = 1;
 	
@@ -88,4 +88,15 @@ void write_bargraph_output(uint16_t value){
 	
 	// Update the output
 	Tlc.update();
+}
+
+void delayButUpdateBargraph(unsigned long ms){
+	
+	uint32_t startTime = millis();
+	
+	// Until we reach the timeout...
+	while(millis() - startTime < ms){
+		// Update the bargraph
+		update_bargraph_output();
+	}	
 }

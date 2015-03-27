@@ -9,13 +9,16 @@
 	#include "WProgram.h"
 #endif
 
+
+
 void set_bargraph(uint8_t value);
 void set_bargraph(uint8_t value, boolean fill_up);
-void set_bargraph(uint16_t value);
+void set_bargraph_raw(uint16_t value);
 uint16_t create_bargraph_value(uint8_t value, boolean fill_up);
 void set_bargraph_flashing(boolean flashing);
 void set_bargraph_flashing(boolean flashing, uint16_t delay);
 void update_bargraph_output();
 void write_bargraph_output(uint16_t value);
+void delayButUpdateBargraph(unsigned long);
 
 #endif
